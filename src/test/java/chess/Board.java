@@ -2,46 +2,63 @@ package chess;
 
 import chess.Pieces.Pawn;
 
+import javax.print.DocFlavor;
 import java.util.ArrayList;
 
 public class Board {
-    private int Number;
-    private ArrayList<Pawn> arrayList;
-    /**
-     * Cria um constructor chess.Board no qual,ele irá iniciar com zero peças.
-     *
-     */
-    public Board (){
-        this.Number = 0;
-        this.arrayList = new ArrayList<>();
-    }
+    private final int Number;
+    private final ArrayList<Pawn> arrayList;
+    private final ArrayList<Pawn> FirstRank;
+    private final ArrayList<Pawn> SeventhRank;
 
-    /**
-     * metodo usado para retorna número de peças
-     * @return retorna peças em formato númerico
-     */
+    public Board (){
+        this.Number = 16;
+        this.arrayList = new ArrayList<>();
+        this.FirstRank = new ArrayList<>();
+        this.SeventhRank = new ArrayList<>();
+    }
     public int getNumberOfPieces(){
         return Number;
     }
-    public void incrementCount(){
-        this.Number += 1;
+    public int incrementCount(){
+        return Number;
     }
-
-    /**
-     * adiciona pawn em uma array
-     * @param pawn é usado para se referir objeto e adiciona-ló
-     */
-    public void addPawn(Pawn pawn){
-        arrayList.add(pawn);
-    }
-
-    /**
-     * metodo criado para receber as peças recebidas
-     * @param index especifica o tipo da variavel
-     * @return pegará o objeto guardado e o envia para a array
-     */
+//    public void addPawn(Pawn pawn){
+//        arrayList.add(pawn);
+//    }
     public Pawn getPieces(int index ){
         return arrayList.get(index);
     }
-
+    public void initialize(){
+        FirstRank.add(new Pawn("White", 'p'));
+        FirstRank.add(new Pawn("White", 'p'));
+        FirstRank.add(new Pawn("White", 'p'));
+        FirstRank.add(new Pawn("White", 'p'));
+        FirstRank.add(new Pawn("White", 'p'));
+        FirstRank.add(new Pawn("White", 'p'));
+        FirstRank.add(new Pawn("White", 'p'));
+        FirstRank.add(new Pawn("White", 'p'));
+        SeventhRank.add(new Pawn("Black", 'P'));
+        SeventhRank.add(new Pawn("Black", 'P'));
+        SeventhRank.add(new Pawn("Black", 'P'));
+        SeventhRank.add(new Pawn("Black", 'P'));
+        SeventhRank.add(new Pawn("Black", 'P'));
+        SeventhRank.add(new Pawn("Black", 'P'));
+        SeventhRank.add(new Pawn("Black", 'P'));
+        SeventhRank.add(new Pawn("Black", 'P'));
+    }
+    public String firstRankRepresentation(){
+        StringBuilder buffer = new StringBuilder();
+        for (int i = 0; i < FirstRank.size(); i++) {
+            buffer.append(FirstRank.get(i).getRepresentation());
+        }
+        return buffer.toString();
+    }
+    public String seventhRankRepresentation(){
+        StringBuilder buffer = new StringBuilder();
+        for (int i = 0; i < SeventhRank.size(); i++) {
+            buffer.append(SeventhRank.get(i).getRepresentation());
+        }
+        return buffer.toString();
+    }
 }

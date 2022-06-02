@@ -4,13 +4,15 @@ import java.awt.*;
 
 public class Pawn {
     private String color;
+    private char representation;
 
     /**
      * cria um pawn que receberá um tipo de cor
      * @param color especifica o tipo dado
      */
-    public Pawn(String color){
+    public Pawn(String color, char representation){
         this.color = color;
+        this.representation = representation;
     }
 
     /**
@@ -19,6 +21,10 @@ public class Pawn {
      */
     public String getColor(){
         return color;
+    }
+
+    public char getRepresentation(){
+        return representation;
     }
 
     public static String WHITE = "White";
