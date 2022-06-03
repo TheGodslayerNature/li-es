@@ -1,7 +1,5 @@
 package chess.Pieces;
 
-import java.awt.*;
-
 public class Pawn {
     private String color;
     private char representation;

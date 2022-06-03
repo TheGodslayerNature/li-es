@@ -1,33 +1,54 @@
 package chess;
-import chess.Pieces.Pawn;
+import org.junit.Before;
 import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
 
 public class BoardTest {
-    @Test
-    public void TestBoard(){
-        Board board = new Board();
-        assertEquals(16,board.getNumberOfPieces());
-        board.initialize();
-        assertEquals("pppppppp", board.firstRankRepresentation());
-        assertEquals("PPPPPPPP", board.seventhRankRepresentation());
+    private Board board;
+    @Before
+    public void setUp() {
+        board = new Board();
     }
-
     @Test
-    public void CountPieces() {
-        Board board = new Board();
-        board.incrementCount();
-        assertEquals(16,board.getNumberOfPieces());
+    public void testCreateInitialBoardVersionRemastered(){
+        board.initialize();
+        assertEquals("......." + Board.NEWLINE +
+                "PPPPPPPP"+ Board.NEWLINE +
+                "......." + Board.NEWLINE +
+                "......." + Board.NEWLINE +
+                "......." + Board.NEWLINE +
+                "......." + Board.NEWLINE +
+                "pppppppp" + Board.NEWLINE +
+                "......." , board.anotherPrintBoardSolution());
+        System.out.println(board.anotherPrintBoardSolution());
+        System.out.println(board.getNumberOfPieces());
     }
 //    @Test
-//    public void testAddPieces(){
-//        Pawn pawn = new Pawn();
-//        Board board = new Board();
-//        board.addPawn(pawn);
-//        assertEquals(pawn, board.getPieces(0));
-//        System.out.println(board.getNumberOfPieces());
+//    public void testCreateInitialBoard(){
+//        board.initialize();
+//        assertEquals("......." + Board.NEWLINE +
+//                "PPPPPPPP"+ Board.NEWLINE +
+//                "......." + Board.NEWLINE +
+//                "......." + Board.NEWLINE +
+//                "......." + Board.NEWLINE +
+//                "......." + Board.NEWLINE +
+//                "pppppppp"+ Board.NEWLINE +
+//                "......." , board.printBoard());
+//        System.out.println(board.printBoard());
 //    }
+    @Test
+    public void testCreateBoard(){
+        assertEquals(0,board.getNumberOfPieces());
+//        board.initialize();
+//        assertEquals("pppppppp", board.secondRankRepresentation());
+//        assertEquals(".......", board.emptyRepresentation());
+//        assertEquals("PPPPPPPP", board.seventhRankRepresentation());
+    }
 
+    @Test
+    public void testCountPieces() {
+        board.incrementCount();
+        assertEquals(0,board.getNumberOfPieces());
+    }
 
 }
